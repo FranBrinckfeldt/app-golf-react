@@ -1,0 +1,1 @@
+En este directorio van todos los archivos estáticos, es decir, imágenes, documentos descargables, etc.
