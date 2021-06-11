@@ -7,7 +7,7 @@ import NavigationLink from './NavigationLink'
 import NavigationButton from './NavigationButton'
 
 const Navigation = () => {
-  const { logout } = useAuth()
+  const { logout, decodedToken } = useAuth()
   return (
     <VStack
       as="nav"
@@ -25,7 +25,7 @@ const Navigation = () => {
       <Text py="4" fontWeight="bold" fontSize="2xl">
         Golf App
       </Text>
-      {pages.filter(page => page.menu).map(page => (
+      {pages.filter(page => page.menu && (page.adminOnly ? decodedToken?.role === 'ADMIN' : true)).map(page => (
         <NavigationLink
           key={page.path}
           to={page.path}

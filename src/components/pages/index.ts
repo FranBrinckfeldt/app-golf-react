@@ -1,12 +1,13 @@
 import React from 'react'
 import { IconDefinition } from '@fortawesome/fontawesome-common-types'
-import { faChartPie, faCog, faTrophy, faUserAlt } from '@fortawesome/free-solid-svg-icons'
+import { faChartPie, faCog, faGolfBall, faTrophy, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 
 export interface Page {
   path: string
   exact: boolean
   component: React.LazyExoticComponent<React.FC>
   public?: boolean
+  adminOnly?: boolean
   menu?: {
     icon: IconDefinition
     label: string
@@ -35,21 +36,38 @@ const pages: Page[] = [
   {
     path: '/tournaments/create',
     exact: true,
-    component: React.lazy(() => import('./TournamentCreate'))
+    component: React.lazy(() => import('./Tournaments/pages/TournamentCreate')),
+    adminOnly: true
+  },
+  {
+    path: '/tournaments/:id',
+    exact: true,
+    component: React.lazy(() => import('./Tournaments/pages/TournamentItem'))
   },
   {
     path: '/users',
     exact: true,
     component: React.lazy(() => import('./Users')),
+    adminOnly: true,
     menu: {
       icon: faUserAlt,
       label: 'Usuarios'
     }
   },
   {
+    path: '/challenges',
+    exact: true,
+    component: React.lazy(() => import('./Challenges')),
+    menu: {
+      icon: faGolfBall,
+      label: 'Desafíos'
+    }
+  },
+  {
     path: '/users/register',
     exact: true,
-    component: React.lazy(() => import('./UserRegister'))
+    component: React.lazy(() => import('./UserRegister')),
+    adminOnly: true
   },
   {
     path: '/account',

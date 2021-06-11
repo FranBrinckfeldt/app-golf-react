@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Td, Tr } from '@chakra-ui/table'
 import { Tournament } from 'models/tournament'
 import { format } from 'date-fns'
+import { Link } from 'react-router-dom'
 
 interface TournamentRowProps {
   tournament: Tournament
@@ -18,7 +19,7 @@ const TournamentRow = ({ tournament }: TournamentRowProps) => {
       <Td>{format(new Date(tournament.endDate), 'MM/dd/yyyy')}</Td>
       <Td>Pendiente</Td>
       <Td>
-        <Button size="sm" colorScheme="primary">
+        <Button as={Link} to={`/tournaments/${tournament._id}`} size="sm" colorScheme="primary">
           <FontAwesomeIcon icon={faEye} />
         </Button>
       </Td>
