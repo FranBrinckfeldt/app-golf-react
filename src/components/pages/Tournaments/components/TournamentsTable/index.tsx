@@ -26,15 +26,6 @@ const TournamentsTable = ({ tournaments }: TournamentsTableProps) => {
             <TournamentRow key={item._id} tournament={item} />
           ))}
         </Tbody>
-        <Tfoot>
-          <Tr>
-            <Th>Nombre</Th>
-            <Th>Fecha de comienzo</Th>
-            <Th>Fecha de finalización</Th>
-            <Th>Estado</Th>
-            <Th>Acciones</Th>
-          </Tr>
-        </Tfoot>
       </Table>
     </Box>
   )

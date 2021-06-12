@@ -2,7 +2,7 @@ import React from 'react'
 import { Box } from '@chakra-ui/layout'
 import { Table, Tbody, Th, Thead, Tr } from '@chakra-ui/table'
 import { User } from 'models/user'
-import TournamentRow from './UserRow'
+import UserRow from './UserRow'
 
 interface UsersTableProps {
   users?: User[]
@@ -21,7 +21,7 @@ const UsersTable = ({ users }: UsersTableProps) => {
         </Thead>
         <Tbody>
           {users?.map(item => (
-            <TournamentRow key={item._id} user={item} />
+            <UserRow key={item._id} user={item} />
           ))}
         </Tbody>
       </Table>

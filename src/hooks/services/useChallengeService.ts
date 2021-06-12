@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 import useAuth from 'hooks/useAuth'
-import { Challenge } from 'models/challenge'
+import { Challenge } from 'models/tournament'
 import { useCallback } from 'react'
 import { getHttpClient } from 'utils'
 
