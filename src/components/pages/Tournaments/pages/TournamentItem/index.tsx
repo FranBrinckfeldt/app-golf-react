@@ -1,5 +1,4 @@
 import React from 'react'
-import { Heading } from '@chakra-ui/layout'
 import { PageLayout } from 'components/layout'
 import { faTrophy } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router'

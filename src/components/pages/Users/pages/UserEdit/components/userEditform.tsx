@@ -11,7 +11,6 @@ interface UserEditFormProps {
 }
 
 const UserEditForm = ({ user } : UserEditFormProps) => {
-  console.log(user)
   const { register, handleSubmit, isLoading, errors } = useUserEditForm(user)
 
   return (

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Td, Tr } from '@chakra-ui/table'
 import { User } from 'models/user'
 import { Link } from 'react-router-dom'
+import UserDeleteModal from '../UserDeleteModal'
 
 interface UserRowProps {
   user: User
@@ -22,9 +23,7 @@ const UserRow = ({ user }: UserRowProps) => {
         <Button as={Link} to={`/users/${user._id}`} size="sm" colorScheme="yellow">
           <FontAwesomeIcon icon={faPencilAlt} />
         </Button>
-        <Button size="sm" colorScheme="red" ml="2">
-          <FontAwesomeIcon icon={faTrash} />
-        </Button>
+        <UserDeleteModal user={user} />
       </Td>
     </Tr>
   )

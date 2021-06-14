@@ -13,7 +13,7 @@ interface ParticipantRowProps {
 const ParticipantRow = ({ user, index, tournament }: ParticipantRowProps) => {
   return (
     <Tr key={user._id}>
-      <Td>{index}</Td>
+      <Td>{index + 1}</Td>
       <Td>{user.firstname} {user.lastname}</Td>
       <Td>
         <ChallengeModal tournament={tournament} user={user} />
