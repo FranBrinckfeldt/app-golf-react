@@ -1,9 +1,10 @@
 import React from 'react'
-import { faEye } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '@chakra-ui/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Td, Tr } from '@chakra-ui/table'
 import { User } from 'models/user'
+import { Link } from 'react-router-dom'
 
 interface UserRowProps {
   user: User
@@ -15,9 +16,14 @@ const UserRow = ({ user }: UserRowProps) => {
       <Td>{user.firstname} {user.lastname}</Td>
       <Td>{user.email}</Td>
       <Td>{user.phone}</Td>
+      <Td>{user.location.address}</Td>
+      <Td>{user.location.country}</Td>
       <Td>
-        <Button size="sm" colorScheme="primary">
-          <FontAwesomeIcon icon={faEye} />
+        <Button as={Link} to={`/users/${user._id}`} size="sm" colorScheme="yellow">
+          <FontAwesomeIcon icon={faPencilAlt} />
+        </Button>
+        <Button size="sm" colorScheme="red" ml="2">
+          <FontAwesomeIcon icon={faTrash} />
         </Button>
       </Td>
     </Tr>

@@ -55,6 +55,18 @@ const pages: Page[] = [
     }
   },
   {
+    path: '/users/register',
+    exact: true,
+    component: React.lazy(() => import('./Users/pages/UserRegister')),
+    adminOnly: true
+  },
+  {
+    path: '/users/:id',
+    exact: true,
+    component: React.lazy(() => import('./Users/pages/UserEdit')),
+    adminOnly: true
+  },
+  {
     path: '/challenges',
     exact: true,
     component: React.lazy(() => import('./Challenges')),
@@ -62,12 +74,6 @@ const pages: Page[] = [
       icon: faGolfBall,
       label: 'Desafíos'
     }
-  },
-  {
-    path: '/users/register',
-    exact: true,
-    component: React.lazy(() => import('./UserRegister')),
-    adminOnly: true
   },
   {
     path: '/account',

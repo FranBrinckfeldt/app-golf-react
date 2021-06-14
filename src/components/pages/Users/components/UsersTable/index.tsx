@@ -17,6 +17,9 @@ const UsersTable = ({ users }: UsersTableProps) => {
             <Th>Nombre</Th>
             <Th>Email</Th>
             <Th>Teléfono</Th>
+            <Th>Dirección</Th>
+            <Th>País</Th>
+            <Th>Acciones</Th>
           </Tr>
         </Thead>
         <Tbody>
