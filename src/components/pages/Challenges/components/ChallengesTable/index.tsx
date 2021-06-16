@@ -15,7 +15,8 @@ const ChallengesTable = ({ challenges }: ChallengeTableProps) => {
       <Table variant="simple" size="sm">
         <Thead>
           <Tr>
-            <Th>Retador</Th>
+            <Th>Tipo</Th>
+            <Th>Oponente</Th>
             <Th>Fecha</Th>
             <Th>Lugar</Th>
             <Th>Estado</Th>

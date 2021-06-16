@@ -76,15 +76,6 @@ const pages: Page[] = [
     }
   },
   {
-    path: '/account',
-    exact: true,
-    component: React.lazy(() => import('./Account')),
-    menu: {
-      icon: faCog,
-      label: 'Mi Cuenta'
-    }
-  },
-  {
     path: '/login',
     exact: true,
     public: true,

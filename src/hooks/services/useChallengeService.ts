@@ -4,6 +4,13 @@ import { Challenge } from 'models/tournament'
 import { useCallback } from 'react'
 import { getHttpClient } from 'utils'
 
+interface ChallengeRequest {
+  place: string
+  date: Date
+  challenged: string
+  tournament: string
+}
+
 const useChallengeService = () => {
   const { token } = useAuth()
 
@@ -17,9 +24,9 @@ const useChallengeService = () => {
     return client.get<Challenge>(`/challenges/${params.queryKey[1]}`)
   }, [token])
 
-  const insert = useCallback(async (challenge: Challenge) => {
+  const insert = useCallback(async (request: ChallengeRequest) => {
     const client = getHttpClient({ token: token as string })
-    return client.post<Challenge, AxiosResponse<void>>('/challenges', challenge)
+    return client.post<ChallengeRequest, AxiosResponse<void>>(`/challenges/request/${request.tournament}/${request.challenged}`, request)
   }, [token])
 
   return {

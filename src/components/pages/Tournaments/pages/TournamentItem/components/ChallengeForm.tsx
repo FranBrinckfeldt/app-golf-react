@@ -2,7 +2,9 @@ import React from 'react'
 import { Button } from '@chakra-ui/button'
 import { VStack } from '@chakra-ui/layout'
 import { HookFormControl } from 'components/common'
+import HookFormSelect from 'components/common/HookFormSelect'
 import useChallengeCreate from '../hooks/useChallengeCreate'
+import { hourOptions, minuteOptions } from '../utils/timeOptions'
 
 interface ChallengeFormProps {
   tournament: string
@@ -26,6 +28,20 @@ const ChallengeForm = ({ tournament, challenged }: ChallengeFormProps) => {
         type="date"
         register={register}
         error={errors.date} />
+      <HookFormSelect
+        label="Hora"
+        fieldName="hour"
+        placeholder=""
+        register={register}
+        error={errors.hour}
+        options={hourOptions} />
+      <HookFormSelect
+        label="Minutos"
+        fieldName="minute"
+        placeholder=""
+        register={register}
+        error={errors.minute}
+        options={minuteOptions} />
       <HookFormControl
         label="Lugar"
         fieldName="place"

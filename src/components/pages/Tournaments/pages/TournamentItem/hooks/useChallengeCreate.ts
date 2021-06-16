@@ -3,11 +3,14 @@ import { useMutation } from 'react-query'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useToast } from '@chakra-ui/toast'
 import { useAuth, useChallengeService } from 'hooks'
+import { addHours, addMinutes } from 'date-fns'
 import challengeSchema from '../validations/challengeSchema'
 
 interface ChallengeFormData {
   date: Date
   place: string
+  hour: string
+  minute: string
 }
 
 interface ChallengeCreateProps {
@@ -31,7 +34,12 @@ const useChallengeCreate = ({ tournament, challenged }: ChallengeCreateProps) =>
       tournament,
       challenger: decodedToken?._id as string,
       challenged,
-      ...formData
+      place: formData.place,
+      date: addMinutes(
+        addHours(
+          new Date(formData.date), parseInt(formData.hour, 10)
+        ), parseInt(formData.minute, 10)
+      )
     }
     try {
       await execInsert(newChallenge)

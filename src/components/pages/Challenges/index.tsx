@@ -2,11 +2,10 @@ import React, { ChangeEventHandler, useState } from 'react'
 import { Flex, Text } from '@chakra-ui/layout'
 import { PageLayout } from 'components/layout'
 import { faGolfBall } from '@fortawesome/free-solid-svg-icons'
-import { Box, Heading, Select, SimpleGrid } from '@chakra-ui/react'
+import { Box, Heading, Select } from '@chakra-ui/react'
 import { useTournamentService } from 'hooks'
 import { useQuery } from 'react-query'
 import ChallengesTable from './components/ChallengesTable'
-import ChallengerTable from './components/ChallengerTable'
 
 const Challenges = () => {
   const service = useTournamentService()
@@ -34,16 +33,10 @@ const Challenges = () => {
           <option value={item._id}>{item.name}</option>
         ))}
       </Select>
-      <SimpleGrid columns={2} spacing={10}>
-        <Box w="100%">
-          <Heading as="h4" size="md" mb="6">Desafíos recibidos</Heading>
-          <ChallengesTable challenges={tournamentChallenges?.received} />
-        </Box>
-        <Box w="100%">
-          <Heading as="h4" size="md" mb="6">Desafíos enviados</Heading>
-          <ChallengerTable challenges={tournamentChallenges?.sent} />
-        </Box>
-      </SimpleGrid>
+      <Box w="100%">
+        <Heading as="h4" size="md" mb="6">Desafíos</Heading>
+        <ChallengesTable challenges={tournamentChallenges} />
+      </Box>
     </PageLayout>
   )
 }

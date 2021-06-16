@@ -1,10 +1,11 @@
 import React from 'react'
-import { faEye, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '@chakra-ui/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Td, Tr } from '@chakra-ui/table'
 import { User } from 'models/user'
 import { Link } from 'react-router-dom'
+import { useAuth } from 'hooks'
 import UserDeleteModal from '../UserDeleteModal'
 
 interface UserRowProps {
@@ -12,6 +13,8 @@ interface UserRowProps {
 }
 
 const UserRow = ({ user }: UserRowProps) => {
+  const { decodedToken } = useAuth()
+
   return (
     <Tr>
       <Td>{user.firstname} {user.lastname}</Td>
@@ -23,7 +26,9 @@ const UserRow = ({ user }: UserRowProps) => {
         <Button as={Link} to={`/users/${user._id}`} size="sm" colorScheme="yellow">
           <FontAwesomeIcon icon={faPencilAlt} />
         </Button>
-        <UserDeleteModal user={user} />
+        {decodedToken?._id !== user._id && (
+          <UserDeleteModal user={user} />
+        )}
       </Td>
     </Tr>
   )

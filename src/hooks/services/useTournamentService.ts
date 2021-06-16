@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 import useAuth from 'hooks/useAuth'
-import { Tournament, TournamentChallenges } from 'models/tournament'
+import { Challenge, Tournament } from 'models/tournament'
 import { useCallback } from 'react'
 import { getHttpClient } from 'utils'
 
@@ -19,7 +19,7 @@ const useTournamentService = () => {
 
   const getChallenges = useCallback(async (params: { queryKey: string[] }) => {
     const client = getHttpClient({ token: token as string })
-    return client.get<TournamentChallenges>(`/tournaments/${params.queryKey[1]}/challenges`)
+    return client.get<Challenge[]>(`/tournaments/${params.queryKey[1]}/challenges`)
   }, [token])
 
   const insert = useCallback(async (tournament: Tournament) => {
