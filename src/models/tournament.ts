@@ -1,14 +1,11 @@
 import { User } from './user'
 
-export interface PlayerResult {
-  points: number
-  confirmed: boolean
-}
-
 export interface Result {
+  _id: string
   challenge: string
-  challenger: PlayerResult
-  challenged: PlayerResult
+  winner: string | User
+  looser: string | User
+  confirm?: boolean
 }
 
 export interface Response {

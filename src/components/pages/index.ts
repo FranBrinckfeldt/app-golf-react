@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconDefinition } from '@fortawesome/fontawesome-common-types'
-import { faChartPie, faCog, faGolfBall, faTrophy, faUserAlt } from '@fortawesome/free-solid-svg-icons'
+import { faChartPie, faGolfBall, faTrophy, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 
 export interface Page {
   path: string

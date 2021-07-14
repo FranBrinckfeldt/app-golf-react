@@ -16,9 +16,10 @@ interface ChallengeFormData {
 interface ChallengeCreateProps {
   tournament: string
   challenged: string
+  onClose: () => void
 }
 
-const useChallengeCreate = ({ tournament, challenged }: ChallengeCreateProps) => {
+const useChallengeCreate = ({ tournament, challenged, onClose }: ChallengeCreateProps) => {
   const service = useChallengeService()
   const { decodedToken } = useAuth()
 
@@ -48,6 +49,7 @@ const useChallengeCreate = ({ tournament, challenged }: ChallengeCreateProps) =>
         status: 'success',
         isClosable: true
       })
+      onClose()
     } catch (e) {
       toast({
         title: e.message,

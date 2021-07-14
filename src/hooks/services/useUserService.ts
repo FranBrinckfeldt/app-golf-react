@@ -8,8 +8,11 @@ import { getHttpClient } from 'utils'
 const useUserService = () => {
   const { token } = useAuth()
 
-  const getAll = useCallback(async () => {
+  const getAll = useCallback(async (params: { queryKey: string[] }) => {
     const client = getHttpClient({ token: token as string })
+    if (params.queryKey[1]) {
+      return client.get<User[]>(`/users?emailq=${params.queryKey[1]}`)
+    }
     return client.get<User[]>('/users')
   }, [token])
 
@@ -28,6 +31,11 @@ const useUserService = () => {
     return client.put<User, AxiosResponse<void>>(`/users/${user._id}`, user)
   }, [token])
 
+  const switchActive = useCallback(async (id: string) => {
+    const client = getHttpClient({ token: token as string })
+    return client.put<undefined, AxiosResponse<void>>(`/users/${id}/active`)
+  }, [token])
+
   const deleteById = useCallback(async (id: string) => {
     const client = getHttpClient({ token: token as string })
     return client.delete(`/users/${id}`)
@@ -38,6 +46,7 @@ const useUserService = () => {
     getById,
     register,
     update,
+    switchActive,
     deleteById
   }
 }

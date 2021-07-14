@@ -14,11 +14,12 @@ const UsersTable = ({ users }: UsersTableProps) => {
       <Table variant="simple" size="sm">
         <Thead>
           <Tr>
-            <Th>Nombre</Th>
+            <Th display={{ base: 'none', lg: 'table-cell' }}>Nombre</Th>
             <Th>Email</Th>
-            <Th>Teléfono</Th>
-            <Th>Dirección</Th>
-            <Th>País</Th>
+            <Th display={{ base: 'none', xl: 'table-cell' }}>Teléfono</Th>
+            <Th display={{ base: 'none', xl: 'table-cell' }}>Dirección</Th>
+            <Th display={{ base: 'none', xl: 'table-cell' }}>País</Th>
+            <Th>Estado</Th>
             <Th>Acciones</Th>
           </Tr>
         </Thead>

@@ -16,7 +16,11 @@ const ParticipantRow = ({ user, index, tournament }: ParticipantRowProps) => {
       <Td>{index + 1}</Td>
       <Td>{user.firstname} {user.lastname}</Td>
       <Td>
-        <ChallengeModal tournament={tournament} user={user} />
+        <ChallengeModal
+          tournament={tournament}
+          user={user}
+          place={index + 1}
+        />
       </Td>
     </Tr>
   )

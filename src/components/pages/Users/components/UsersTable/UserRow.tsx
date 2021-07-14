@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import { Tag } from '@chakra-ui/react'
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '@chakra-ui/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,6 +8,7 @@ import { User } from 'models/user'
 import { Link } from 'react-router-dom'
 import { useAuth } from 'hooks'
 import UserDeleteModal from '../UserDeleteModal'
+import UserActiveModal from '../UserActiveModal'
 
 interface UserRowProps {
   user: User
@@ -15,19 +17,30 @@ interface UserRowProps {
 const UserRow = ({ user }: UserRowProps) => {
   const { decodedToken } = useAuth()
 
+  const status = useMemo(() => ({
+    label: user.active ? 'Activo' : 'Bloqueado',
+    color: user.active ? 'green' : 'red'
+  }), [user.active])
+
   return (
     <Tr>
-      <Td>{user.firstname} {user.lastname}</Td>
+      <Td display={{ base: 'none', lg: 'table-cell' }}>{user.firstname} {user.lastname}</Td>
       <Td>{user.email}</Td>
-      <Td>{user.phone}</Td>
-      <Td>{user.location.address}</Td>
-      <Td>{user.location.country}</Td>
+      <Td display={{ base: 'none', xl: 'table-cell' }}>{user.phone}</Td>
+      <Td display={{ base: 'none', xl: 'table-cell' }}>{user.location.address}</Td>
+      <Td display={{ base: 'none', xl: 'table-cell' }}>{user.location.country}</Td>
       <Td>
+        <Tag colorScheme={status.color}>{status.label}</Tag>
+      </Td>
+      <Td whiteSpace="nowrap">
         <Button as={Link} to={`/users/${user._id}`} size="sm" colorScheme="yellow">
-          <FontAwesomeIcon icon={faPencilAlt} />
+          <FontAwesomeIcon icon={faPencilAlt} fixedWidth />
         </Button>
         {decodedToken?._id !== user._id && (
-          <UserDeleteModal user={user} />
+          <>
+            <UserActiveModal user={user} />
+            {!user.active && <UserDeleteModal user={user} />}
+          </>
         )}
       </Td>
     </Tr>

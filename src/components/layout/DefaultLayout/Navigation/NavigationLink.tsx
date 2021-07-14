@@ -19,13 +19,14 @@ const NavigationLink = ({ icon, label, to }: NavigationItemProps) => {
     <Flex
       as={Link}
       to={to}
-      px="4"
-      py="4"
+      px="3"
+      py="3"
+      alignItems="center"
       transition="250ms"
       _hover={hoverStyle}
       borderRadius="md">
-      <Text as={FontAwesomeIcon} icon={icon} fontSize="2xl" mr="2" fixedWidth />
-      <Text as="span" fontSize="lg">{label}</Text>
+      <Text as={FontAwesomeIcon} icon={icon} fontSize="xl" mr="2" fixedWidth />
+      <Text as="span" fontSize="md">{label}</Text>
     </Flex>
   )
 }

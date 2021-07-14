@@ -9,4 +9,5 @@ export interface User {
     address: string
     country: string
   }
+  active?: boolean
 }

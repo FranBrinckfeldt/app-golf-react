@@ -3,9 +3,17 @@ import { Button } from '@chakra-ui/button'
 import { VStack } from '@chakra-ui/layout'
 import { HookFormControl } from 'components/common'
 import useTournamentCreate from '../hooks/useTournamentCreate'
+import ParticipantsDragAndDrop from './ParticipantsDragAndDrop'
 
 const TournamentForm = () => {
-  const { register, handleSubmit, isLoading, errors } = useTournamentCreate()
+  const {
+    register,
+    handleSubmit,
+    isLoading,
+    errors,
+    draggables,
+    setDraggables
+  } = useTournamentCreate()
 
   return (
     <VStack as="form" onSubmit={handleSubmit} spacing="6" mb="6" mt="6" alignItems="flex-start">
@@ -27,7 +35,10 @@ const TournamentForm = () => {
         type="date"
         register={register}
         error={errors.endDate} />
-      <Button type="submit" colorScheme="accent" isDisabled={isLoading}>
+      <ParticipantsDragAndDrop
+        draggables={draggables}
+        setDraggables={setDraggables} />
+      <Button type="submit" colorScheme="accent" isDisabled={isLoading || draggables.selected.length < 2}>
         Crear un nuevo torneo
       </Button>
     </VStack>

@@ -13,20 +13,24 @@ import {
 } from '@chakra-ui/react'
 import { User } from 'models/user'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import useDeleteUser from './useDeleteUser'
+import { faBan, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import useActiveSwitchUser from './useActiveSwitchUser'
 
-interface UserDeleteModalProps {
+interface Props {
   user: User
 }
 
-const UserDeleteModal = ({ user }: UserDeleteModalProps) => {
+const UserActiveModal = ({ user }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { onDelete, isLoading } = useDeleteUser(user, onClose)
+  const { onActiveSwitch, isLoading } = useActiveSwitchUser(user, onClose)
+
+  const label = user.active ? 'bloquear' : 'desbloquear'
+  const color = user.active ? 'red' : 'green'
+
   return (
     <>
-      <Button size="sm" colorScheme="red" ml="2" onClick={onOpen}>
-        <FontAwesomeIcon icon={faTrash} fixedWidth />
+      <Button size="sm" colorScheme={color} ml="2" onClick={onOpen}>
+        <FontAwesomeIcon icon={user.active ? faBan : faCheckCircle} fixedWidth />
       </Button>
 
       <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
@@ -36,12 +40,17 @@ const UserDeleteModal = ({ user }: UserDeleteModalProps) => {
           <ModalCloseButton />
           <ModalBody>
             <Text>
-              ¿Estás seguro que deseas eliminar al usuario {user.firstname} {user.lastname}?
+              ¿Estás seguro que deseas {label} al usuario {user.firstname} {user.lastname}?
             </Text>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="red" mr={3} onClick={onDelete} disabled={isLoading}>
-              Eliminar
+            <Button
+              colorScheme={color}
+              textTransform="capitalize"
+              mr={3}
+              onClick={onActiveSwitch}
+              disabled={isLoading}>
+              {label}
             </Button>
             <Button variant="ghost" onClick={onClose} disabled={isLoading}>
               Cancelar
@@ -53,4 +62,4 @@ const UserDeleteModal = ({ user }: UserDeleteModalProps) => {
   )
 }
 
-export default UserDeleteModal
+export default UserActiveModal

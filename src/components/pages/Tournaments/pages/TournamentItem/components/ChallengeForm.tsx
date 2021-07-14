@@ -9,15 +9,16 @@ import { hourOptions, minuteOptions } from '../utils/timeOptions'
 interface ChallengeFormProps {
   tournament: string
   challenged: string
+  onClose: () => void
 }
 
-const ChallengeForm = ({ tournament, challenged }: ChallengeFormProps) => {
+const ChallengeForm = ({ tournament, challenged, onClose }: ChallengeFormProps) => {
   const {
     register,
     handleSubmit,
     isLoading,
     errors
-  } = useChallengeCreate({ tournament, challenged })
+  } = useChallengeCreate({ tournament, challenged, onClose })
 
   return (
     <VStack as="form" onSubmit={handleSubmit} spacing="6" mb="6" mt="6" alignItems="flex-start">

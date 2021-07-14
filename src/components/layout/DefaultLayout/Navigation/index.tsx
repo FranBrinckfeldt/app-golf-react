@@ -13,7 +13,7 @@ const Navigation = () => {
       as="nav"
       bgGradient="linear(to-br, primary.500, primary.300)"
       color="white"
-      w="72"
+      w="64"
       flexShrink={0}
       h="100vh"
       top="0"
