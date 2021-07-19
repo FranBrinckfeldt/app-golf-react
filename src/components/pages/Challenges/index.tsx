@@ -1,5 +1,4 @@
 import React, { ChangeEventHandler, useState } from 'react'
-import { Flex, Text } from '@chakra-ui/layout'
 import { PageLayout } from 'components/layout'
 import { faGolfBall } from '@fortawesome/free-solid-svg-icons'
 import { Box, Heading, Select } from '@chakra-ui/react'
@@ -30,7 +29,7 @@ const Challenges = () => {
       icon={faGolfBall}>
       <Select onChange={handleSelectChange} placeholder="Selecciona un torneo" my="6">
         {tournaments?.map(item => (
-          <option value={item._id}>{item.name}</option>
+          <option key={item._id} value={item._id}>{item.name}</option>
         ))}
       </Select>
       <Box w="100%">

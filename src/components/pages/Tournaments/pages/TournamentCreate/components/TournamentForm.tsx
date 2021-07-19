@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@chakra-ui/button'
 import { VStack } from '@chakra-ui/layout'
+import { Box, Select, Text } from '@chakra-ui/react'
 import { HookFormControl } from 'components/common'
 import useTournamentCreate from '../hooks/useTournamentCreate'
 import ParticipantsDragAndDrop from './ParticipantsDragAndDrop'
@@ -12,7 +13,10 @@ const TournamentForm = () => {
     isLoading,
     errors,
     draggables,
-    setDraggables
+    setDraggables,
+    handleTournamentSelection,
+    tournamentForCopy,
+    tournamentsForCopyOptions
   } = useTournamentCreate()
 
   return (
@@ -35,6 +39,22 @@ const TournamentForm = () => {
         type="date"
         register={register}
         error={errors.endDate} />
+      <Box w="full">
+        <Text
+          fontWeight="medium"
+          color="gray.900"
+          mb="2">
+          Copiar escalerilla
+        </Text>
+        <Select value={tournamentForCopy} onChange={handleTournamentSelection}>
+          <option value="">Ninguno</option>
+          {tournamentsForCopyOptions.map(opt => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </Select>
+      </Box>
       <ParticipantsDragAndDrop
         draggables={draggables}
         setDraggables={setDraggables} />
