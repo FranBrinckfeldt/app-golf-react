@@ -15,9 +15,8 @@ const TournamentRow = ({ tournament }: TournamentRowProps) => {
   return (
     <Tr>
       <Td>{tournament.name}</Td>
-      <Td>{format(new Date(tournament.startDate), 'MM/dd/yyyy')}</Td>
-      <Td>{format(new Date(tournament.endDate), 'MM/dd/yyyy')}</Td>
-      <Td>Pendiente</Td>
+      <Td display={{ base: 'none', md: 'table-cell' }}>{format(new Date(tournament.startDate), 'dd/MM/yyyy')}</Td>
+      <Td display={{ base: 'none', md: 'table-cell' }}>{format(new Date(tournament.endDate), 'dd/MM/yyyy')}</Td>
       <Td>
         <Button as={Link} to={`/tournaments/${tournament._id}`} size="sm" colorScheme="primary">
           <FontAwesomeIcon icon={faEye} />

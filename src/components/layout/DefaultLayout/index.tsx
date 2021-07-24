@@ -17,7 +17,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
     <>
       <Flex as="main" justifyContent="stretch" w="full" minH="100vh" h="full" overflow="hidden">
         {isAuthenticated && <Navigation />}
-        <Box ml={isAuthenticated ? '64' : '0'} w="full">
+        <Box ml={isAuthenticated ? { base: '20', md: '64' } : '0'} w="full">
           {hasPermission ? children : <Forbidden />}
         </Box>
       </Flex>

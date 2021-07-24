@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useToast } from '@chakra-ui/toast'
 import { useAuth, useChallengeService } from 'hooks'
 import { addHours, addMinutes } from 'date-fns'
+import { Tournament } from 'models/tournament'
 import challengeSchema from '../validations/challengeSchema'
 
 interface ChallengeFormData {
@@ -14,7 +15,7 @@ interface ChallengeFormData {
 }
 
 interface ChallengeCreateProps {
-  tournament: string
+  tournament: Tournament
   challenged: string
   onClose: () => void
 }
@@ -24,7 +25,7 @@ const useChallengeCreate = ({ tournament, challenged, onClose }: ChallengeCreate
   const { decodedToken } = useAuth()
 
   const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(challengeSchema)
+    resolver: yupResolver(challengeSchema(tournament.endDate))
   })
   const { mutateAsync: execInsert, isLoading } = useMutation(service.insert)
 
@@ -32,7 +33,7 @@ const useChallengeCreate = ({ tournament, challenged, onClose }: ChallengeCreate
 
   const onSubmit = async (formData: ChallengeFormData) => {
     const newChallenge = {
-      tournament,
+      tournament: tournament._id,
       challenger: decodedToken?._id as string,
       challenged,
       place: formData.place,
@@ -52,7 +53,7 @@ const useChallengeCreate = ({ tournament, challenged, onClose }: ChallengeCreate
       onClose()
     } catch (e) {
       toast({
-        title: e.message,
+        title: 'No se puede desafiar a este jugador actualmente',
         status: 'error',
         isClosable: true
       })

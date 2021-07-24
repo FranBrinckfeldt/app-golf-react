@@ -3,11 +3,12 @@ import { Button } from '@chakra-ui/button'
 import { VStack } from '@chakra-ui/layout'
 import { HookFormControl } from 'components/common'
 import HookFormSelect from 'components/common/HookFormSelect'
+import { Tournament } from 'models/tournament'
 import useChallengeCreate from '../hooks/useChallengeCreate'
 import { hourOptions, minuteOptions } from '../utils/timeOptions'
 
 interface ChallengeFormProps {
-  tournament: string
+  tournament: Tournament
   challenged: string
   onClose: () => void
 }

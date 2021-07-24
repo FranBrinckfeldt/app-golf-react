@@ -25,11 +25,11 @@ const UserRow = ({ user }: UserRowProps) => {
   return (
     <Tr>
       <Td display={{ base: 'none', lg: 'table-cell' }}>{user.firstname} {user.lastname}</Td>
-      <Td>{user.email}</Td>
+      <Td maxW={{ base: '16', sm: 'full' }}>{user.email}</Td>
       <Td display={{ base: 'none', xl: 'table-cell' }}>{user.phone}</Td>
       <Td display={{ base: 'none', xl: 'table-cell' }}>{user.location.address}</Td>
       <Td display={{ base: 'none', xl: 'table-cell' }}>{user.location.country}</Td>
-      <Td>
+      <Td display={{ base: 'none', md: 'table-cell' }}>
         <Tag colorScheme={status.color}>{status.label}</Tag>
       </Td>
       <Td whiteSpace="nowrap">

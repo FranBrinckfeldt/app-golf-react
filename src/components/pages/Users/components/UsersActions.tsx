@@ -21,15 +21,24 @@ const UsersActions = ({ onEmailQueryChanges }: Props) => {
   }
 
   return (
-    <Flex my="4" justifyContent="space-between">
+    <Flex
+      my="4"
+      justifyContent={{ base: 'initial', md: 'space-between' }}
+      flexDirection={{ base: 'column', md: 'row' }}
+    >
       <Button
         colorScheme="accent"
         as={Link}
+        mb={{ base: '4', md: '0' }}
+        display="flex"
         to="/users/register">
         <FontAwesomeIcon icon={faPlus} />
         <Text ml="2">Registrar un usuario</Text>
       </Button>
-      <Input onChange={handleChange} w="64" placeholder="Buscar por email..." />
+      <Input
+        onChange={handleChange}
+        w={{ base: 'full', md: '64' }}
+        placeholder="Buscar por email..." />
     </Flex>
   )
 }

@@ -35,7 +35,7 @@ const HookFormSelect = <T extends FieldValues>({
           focusBorderColor="accent.500"
           placeholder={placeholder}>
           {options.map(val => (
-            <option value={val.value} selected={val.selected}>{val.label}</option>
+            <option key={val.value} value={val.value} selected={val.selected}>{val.label}</option>
           ))}
         </Select>
       </InputGroup>

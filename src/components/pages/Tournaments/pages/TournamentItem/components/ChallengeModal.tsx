@@ -4,7 +4,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
@@ -50,7 +49,7 @@ const ChallengeModal = ({ user, tournament, place }: ChallengeModalProps) => {
           <ModalCloseButton />
           <ModalBody>
             <ChallengeForm
-              tournament={tournament._id}
+              tournament={tournament}
               challenged={user._id as string}
               onClose={onClose} />
           </ModalBody>

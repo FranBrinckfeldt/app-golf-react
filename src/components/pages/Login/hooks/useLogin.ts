@@ -22,7 +22,7 @@ const useLogin = () => {
       setAuthToken(data.accessToken)
     } catch (e) {
       toast({
-        title: e.message,
+        title: 'Credenciales inválidas',
         status: 'error',
         isClosable: true
       })

@@ -64,7 +64,7 @@ const ResponseDecline = ({ challenge, onDecline, onCancel, loading }: Props) => 
           <option value="viaje">Viaje de negocios o Vacaciones</option>
           <option value="otro">Otro</option>
         </Select>
-        <Textarea value={message} onChange={handleChange} />
+        <Textarea value={message} onChange={handleChange} placeholder="Escribe un mensaje..." />
       </ModalBody>
       <ModalFooter>
         <Button colorScheme="red" mr={3} onClick={handleDecline} isLoading={loading}>

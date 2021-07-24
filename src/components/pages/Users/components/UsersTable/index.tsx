@@ -10,7 +10,7 @@ interface UsersTableProps {
 
 const UsersTable = ({ users }: UsersTableProps) => {
   return (
-    <Box borderRadius="md" boxShadow="md" p="4">
+    <Box borderRadius="md" boxShadow="md" p="4" w="full" overflowX="scroll">
       <Table variant="simple" size="sm">
         <Thead>
           <Tr>
@@ -19,7 +19,7 @@ const UsersTable = ({ users }: UsersTableProps) => {
             <Th display={{ base: 'none', xl: 'table-cell' }}>Teléfono</Th>
             <Th display={{ base: 'none', xl: 'table-cell' }}>Dirección</Th>
             <Th display={{ base: 'none', xl: 'table-cell' }}>País</Th>
-            <Th>Estado</Th>
+            <Th display={{ base: 'none', md: 'table-cell' }}>Estado</Th>
             <Th>Acciones</Th>
           </Tr>
         </Thead>

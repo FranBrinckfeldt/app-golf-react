@@ -13,7 +13,7 @@ const Navigation = () => {
       as="nav"
       bgGradient="linear(to-br, primary.500, primary.300)"
       color="white"
-      w="64"
+      w={{ base: '18', md: '64' }}
       flexShrink={0}
       h="100vh"
       top="0"
@@ -22,7 +22,7 @@ const Navigation = () => {
       py="6"
       userSelect="none"
       alignItems="stretch">
-      <Text py="4" fontWeight="bold" fontSize="2xl">
+      <Text py="4" fontWeight="bold" fontSize="2xl" display={{ base: 'none', md: 'block' }}>
         Golf App
       </Text>
       {pages.filter(page => page.menu && (page.adminOnly ? decodedToken?.role === 'ADMIN' : true)).map(page => (
@@ -37,7 +37,7 @@ const Navigation = () => {
         icon={faSignOutAlt}
         label="Cerrar sesión" />
       <Spacer />
-      <Text textAlign="center">v0.1.0 · 2021</Text>
+      <Text textAlign="center">v0.1.0{' '}<Text as="span" display={{ base: 'none', md: 'inline' }}>· 2021</Text></Text>
     </VStack>
   )
 }

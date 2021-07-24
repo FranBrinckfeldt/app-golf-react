@@ -11,7 +11,8 @@ const TournamentsActions = () => {
       <Button
         colorScheme="accent"
         as={Link}
-        to="/tournaments/create">
+        to="/tournaments/create"
+        w={{ base: 'full', md: 'auto' }}>
         <FontAwesomeIcon icon={faPlus} />
         <Text ml="2">Crear nuevo torneo</Text>
       </Button>

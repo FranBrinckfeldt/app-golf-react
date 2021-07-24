@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@chakra-ui/layout'
-import { Table, Tbody, Tfoot, Th, Thead, Tr } from '@chakra-ui/table'
+import { Table, Tbody, Th, Thead, Tr } from '@chakra-ui/table'
 import { Tournament } from 'models/tournament'
 import TournamentRow from './TournamentRow'
 
@@ -15,9 +15,8 @@ const TournamentsTable = ({ tournaments }: TournamentsTableProps) => {
         <Thead>
           <Tr>
             <Th>Nombre</Th>
-            <Th>Fecha de comienzo</Th>
-            <Th>Fecha de finalización</Th>
-            <Th>Estado</Th>
+            <Th display={{ base: 'none', md: 'table-cell' }}>Fecha de comienzo</Th>
+            <Th display={{ base: 'none', md: 'table-cell' }}>Fecha de finalización</Th>
             <Th>Acciones</Th>
           </Tr>
         </Thead>

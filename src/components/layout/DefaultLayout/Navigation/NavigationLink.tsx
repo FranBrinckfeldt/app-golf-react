@@ -26,7 +26,7 @@ const NavigationLink = ({ icon, label, to }: NavigationItemProps) => {
       _hover={hoverStyle}
       borderRadius="md">
       <Text as={FontAwesomeIcon} icon={icon} fontSize="xl" mr="2" fixedWidth />
-      <Text as="span" fontSize="md">{label}</Text>
+      <Text as="span" fontSize="md" display={{ base: 'none', md: 'inline' }}>{label}</Text>
     </Flex>
   )
 }

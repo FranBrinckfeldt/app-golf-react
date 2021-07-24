@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { Challenge } from 'models/tournament'
 import { User } from 'models/user'
+import { format } from 'date-fns/esm'
 
 interface Props {
   challenge: Challenge
@@ -38,7 +39,7 @@ const ResponseContent = ({ challenge, onAccept, onDecline, loading }: Props) => 
             </Text>
           </Text>
         </Text>
-        <Text mb="2" display="block">Se llevará a cabo en {challenge.place} a las {challenge.date}</Text>
+        <Text mb="2" display="block">Se llevará a cabo en {challenge.place} a fecha {format(new Date(challenge.date), 'dd/MM/yyyy, HH:mm')} horas.</Text>
         <Text fontWeight="bold">Aceptas el desafío?</Text>
       </ModalBody>
       <ModalFooter>
