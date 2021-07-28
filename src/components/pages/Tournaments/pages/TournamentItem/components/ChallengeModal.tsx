@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import {
   Modal,
   ModalOverlay,
@@ -24,9 +24,10 @@ interface ChallengeModalProps {
 const ChallengeModal = ({ user, tournament, place }: ChallengeModalProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { decodedToken } = useAuth()
-  const maxPlacesToChallenge = useMemo(() => (
-    getWeekOfMonth(new Date()) === 1 ? 15 : 5
-  ), [])
+  const isSpecialWeek = (
+    process.env.REACT_APP_FORCE_SPECIAL_WEEK === 'true'
+    || getWeekOfMonth(new Date()) === 1)
+  const maxPlacesToChallenge = isSpecialWeek ? 15 : 5
   const userPlace = (tournament.participants as User[]).findIndex(
     (participant: User) => participant._id === decodedToken?._id
   ) + 1

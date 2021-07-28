@@ -20,13 +20,13 @@ const ChallengeRow = ({ challenge }: ChallengeRowProps) => {
 
   return (
     <Tr>
-      <Td>{isUserChallenger ? 'Enviado' : 'Recibido'}</Td>
+      <Td display={{ base: 'none', lg: 'table-cell' }}>{isUserChallenger ? 'Enviado' : 'Recibido'}</Td>
       <Td>{isUserChallenger
         ? (challenge.challenged as User).firstname
         : (challenge.challenger as User).firstname}
       </Td>
-      <Td>{format(new Date(challenge.date), 'MM/dd/yyyy HH:mm')}</Td>
-      <Td>{challenge.place}</Td>
+      <Td display={{ base: 'none', md: 'table-cell' }}>{format(new Date(challenge.date), 'MM/dd/yyyy HH:mm')}</Td>
+      <Td display={{ base: 'none', lg: 'table-cell' }}>{challenge.place}</Td>
       <Td>{challengeStatus}</Td>
       <Td>
         {!isUserChallenger && challengeStatus === 'Pendiente' && (

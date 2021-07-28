@@ -15,10 +15,10 @@ const ChallengesTable = ({ challenges }: ChallengeTableProps) => {
       <Table variant="simple" size="sm">
         <Thead>
           <Tr>
-            <Th>Tipo</Th>
+            <Th display={{ base: 'none', lg: 'table-cell' }}>Tipo</Th>
             <Th>Oponente</Th>
-            <Th>Fecha</Th>
-            <Th>Lugar</Th>
+            <Th display={{ base: 'none', md: 'table-cell' }}>Fecha</Th>
+            <Th display={{ base: 'none', lg: 'table-cell' }}>Lugar</Th>
             <Th>Estado</Th>
             <Th>Acciones</Th>
           </Tr>
