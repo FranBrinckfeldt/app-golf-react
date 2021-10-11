@@ -44,11 +44,6 @@ const ChallengeForm = ({ tournament, challenged, onClose }: ChallengeFormProps) 
         register={register}
         error={errors.minute}
         options={minuteOptions} />
-      <HookFormControl
-        label="Lugar"
-        fieldName="place"
-        register={register}
-        error={errors.place} />
       <Button type="submit" colorScheme="accent" isDisabled={isLoading}>
         Enviar desafío
       </Button>

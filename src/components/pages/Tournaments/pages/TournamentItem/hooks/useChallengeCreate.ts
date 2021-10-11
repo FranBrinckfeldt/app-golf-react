@@ -36,7 +36,7 @@ const useChallengeCreate = ({ tournament, challenged, onClose }: ChallengeCreate
       tournament: tournament._id,
       challenger: decodedToken?._id as string,
       challenged,
-      place: formData.place,
+      place: formData.place || 'no-place',
       date: addMinutes(
         addHours(
           new Date(formData.date), parseInt(formData.hour, 10)

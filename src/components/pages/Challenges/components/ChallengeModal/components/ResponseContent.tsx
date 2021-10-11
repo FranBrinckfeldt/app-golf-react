@@ -39,7 +39,7 @@ const ResponseContent = ({ challenge, onAccept, onDecline, loading }: Props) => 
             </Text>
           </Text>
         </Text>
-        <Text mb="2" display="block">Se llevará a cabo en {challenge.place} a fecha {format(new Date(challenge.date), 'dd/MM/yyyy, HH:mm')} horas.</Text>
+        <Text mb="2" display="block">Se llevará a cabo en la fecha {format(new Date(challenge.date), 'dd/MM/yyyy, HH:mm')} horas.</Text>
         <Text fontWeight="bold">Aceptas el desafío?</Text>
       </ModalBody>
       <ModalFooter>

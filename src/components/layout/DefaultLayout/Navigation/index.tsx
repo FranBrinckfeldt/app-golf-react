@@ -23,7 +23,7 @@ const Navigation = () => {
       userSelect="none"
       alignItems="stretch">
       <Text py="4" fontWeight="bold" fontSize="2xl" display={{ base: 'none', md: 'block' }}>
-        Golf App
+        Escalerilla App
       </Text>
       {pages.filter(page => page.menu && (page.adminOnly ? decodedToken?.role === 'ADMIN' : true)).map(page => (
         <NavigationLink
@@ -37,7 +37,7 @@ const Navigation = () => {
         icon={faSignOutAlt}
         label="Cerrar sesión" />
       <Spacer />
-      <Text textAlign="center">v0.1.0{' '}<Text as="span" display={{ base: 'none', md: 'inline' }}>· 2021</Text></Text>
+      <Text textAlign="center">v0.1.1{' '}<Text as="span" display={{ base: 'none', md: 'inline' }}>· 2021</Text></Text>
     </VStack>
   )
 }

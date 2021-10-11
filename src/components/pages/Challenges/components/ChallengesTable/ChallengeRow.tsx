@@ -4,8 +4,9 @@ import { format } from 'date-fns'
 import { Challenge } from 'models/tournament'
 import { User } from 'models/user'
 import { useAuth } from 'hooks'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ChallengeModal from '../ChallengeModal'
-import { getChallengeStatus } from '../../utils'
+import { getChallengeStatus, getStatusIcon } from '../../utils'
 import ResultModal from '../ResultModal'
 
 interface ChallengeRowProps {
@@ -26,8 +27,7 @@ const ChallengeRow = ({ challenge }: ChallengeRowProps) => {
         : (challenge.challenger as User).firstname}
       </Td>
       <Td display={{ base: 'none', md: 'table-cell' }}>{format(new Date(challenge.date), 'MM/dd/yyyy HH:mm')}</Td>
-      <Td display={{ base: 'none', lg: 'table-cell' }}>{challenge.place}</Td>
-      <Td>{challengeStatus}</Td>
+      <Td><FontAwesomeIcon icon={getStatusIcon(challengeStatus)} />{challengeStatus}</Td>
       <Td>
         {!isUserChallenger && challengeStatus === 'Pendiente' && (
           <ChallengeModal challenge={challenge} />

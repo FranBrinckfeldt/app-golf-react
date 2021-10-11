@@ -18,7 +18,6 @@ const ChallengesTable = ({ challenges }: ChallengeTableProps) => {
             <Th display={{ base: 'none', lg: 'table-cell' }}>Tipo</Th>
             <Th>Oponente</Th>
             <Th display={{ base: 'none', md: 'table-cell' }}>Fecha</Th>
-            <Th display={{ base: 'none', lg: 'table-cell' }}>Lugar</Th>
             <Th>Estado</Th>
             <Th>Acciones</Th>
           </Tr>
