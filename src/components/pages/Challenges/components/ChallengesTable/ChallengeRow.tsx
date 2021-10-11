@@ -5,6 +5,7 @@ import { Challenge } from 'models/tournament'
 import { User } from 'models/user'
 import { useAuth } from 'hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Text } from '@chakra-ui/layout'
 import ChallengeModal from '../ChallengeModal'
 import { getChallengeStatus, getStatusIcon } from '../../utils'
 import ResultModal from '../ResultModal'
@@ -27,7 +28,7 @@ const ChallengeRow = ({ challenge }: ChallengeRowProps) => {
         : (challenge.challenger as User).firstname}
       </Td>
       <Td display={{ base: 'none', md: 'table-cell' }}>{format(new Date(challenge.date), 'MM/dd/yyyy HH:mm')}</Td>
-      <Td><FontAwesomeIcon icon={getStatusIcon(challengeStatus)} />{challengeStatus}</Td>
+      <Td><Text as={FontAwesomeIcon} icon={getStatusIcon(challengeStatus)} pr="2" fontSize="large" />{challengeStatus}</Td>
       <Td>
         {!isUserChallenger && challengeStatus === 'Pendiente' && (
           <ChallengeModal challenge={challenge} />

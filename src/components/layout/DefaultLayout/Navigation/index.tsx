@@ -37,7 +37,7 @@ const Navigation = () => {
         icon={faSignOutAlt}
         label="Cerrar sesión" />
       <Spacer />
-      <Text textAlign="center">v0.1.1{' '}<Text as="span" display={{ base: 'none', md: 'inline' }}>· 2021</Text></Text>
+      <Text textAlign="center">v0.1.2{' '}<Text as="span" display={{ base: 'none', md: 'inline' }}>· 2021</Text></Text>
     </VStack>
   )
 }
